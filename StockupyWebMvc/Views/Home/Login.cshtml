@@ -1,0 +1,54 @@
+﻿@model DataAccessLibrary.Models.UserModel
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>    
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/Login.css" media="screen" rel="stylesheet" type="text/css" />
+    <title>Login</title>
+</head>
+<body>
+    <div class="post-entry post-entry-type-page post-entry-616">
+        <div class="">
+            <div class="" style="display: flex; justify-content: center;">
+                
+                <img src="~/img/stockupyLogo_large.JPG" alt="" title="stockupyLogo" itemprop="thumbnailUrl">
+            </div>
+            <div class="login-card" style="justify-content:center;">
+                <h1>User Login</h1><br />
+                @using (Html.BeginForm("DoUserLogin", "Home", FormMethod.Post))
+                {
+                    <div>
+                        @Html.ValidationMessageFor(model => model.Username)
+                        @Html.TextBoxFor(model => model.Username, new { @placeholder = "Username" })
+
+                    </div>
+                    <div>
+                        @Html.ValidationMessageFor(model => model.Password)
+                        @Html.TextBoxFor(model => model.Password, new { @placeholder = "Password", @type = "password" })
+
+                    </div>
+                    <input id="" type="submit" name="login" class="login login-submit" value="Login">
+                    @*<input id="txtUserName" type="text" name="user" placeholder="Username" required="">
+                        <input id="txtPassword" type="password" name="pass" placeholder="Password" required="">
+                        <input id="btnLogin" type="submit" name="login" class="login login-submit" value="Login">*@
+
+                    <div style="color:red; margin:5px;">@ViewBag.vb_Error</div>
+                }
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/login.js"></script>
+</body>
+</html>
+
